@@ -38,6 +38,7 @@ export class App extends Component {
  
   handleClick = (id) => {
     let newTodoData = this.todoData.filter((data)=> data.id !== id);
+    console.log('newTodoData',newTodoData)
     this.todoData = newTodoData
   };
 
