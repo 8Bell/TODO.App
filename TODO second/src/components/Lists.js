@@ -57,7 +57,7 @@ export default function Lists({todoData, setTodoData}) {
                         <button style={btnstyle} onClick={() => handleClick(data.id)}>╳</button>
                     </p>
                 </div>
-            ))};
+            ))}
         </div>
     );
 };

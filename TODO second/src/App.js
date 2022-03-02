@@ -21,11 +21,7 @@ export default function App() {
     // 새로운 할일 데이터 생성
     let newTodo = {
       id: Date.now,
-<<<<<<< HEAD
       title: value,
-=======
-      title: {value},
->>>>>>> parent of 8e51bf4 (Revert "Todo App v1.4.4 x")
       completed: false,
     };
     //원래 할 일에 새로운 데이터 더해주기 : 전개 연산자 DeepCopy //submit 후 form의 value 값 비우기
@@ -40,9 +36,8 @@ export default function App() {
             <h1>할 일 목록</h1>
           </div>
 
-          <Lists todoData={todoData} setTodoData={setTodoData}/>
-
-          {/* Form 부분 : 입력시 state 변경해야 입력한 값이 랜더링 됨*/}
+          <Lists todoData={todoData} setTodoData={setTodoData} /> 
+          
           <form style={{ display: "flex" }} >
             <input
               type="text"
