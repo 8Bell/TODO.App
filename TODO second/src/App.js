@@ -47,7 +47,7 @@ export function App() {
     // 새로운 할일 데이터 생성
     let newTodo = {
       id: Date.now,
-      title: this.state.value,
+      title: value,
       completed: false,
     };
     //원래 할 일에 새로운 데이터 더해주기 : 전개 연산자 DeepCopy //submit 후 form의 value 값 비우기
