@@ -14,11 +14,12 @@ export class App extends Component {
   };
 
   //동적으로 작동하는 스타일이므로 함수로 표현
-  getStyle = () => {
+  getStyle = (completed) => {
     return {
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: "none",
+      textDecoration: completed ? 'line-through' : 'none'
+      ,
     };
   };
 
@@ -29,7 +30,7 @@ export class App extends Component {
       {
         id: "1",
         title: "공부하기",
-        completed: true,
+        completed: false,
       },
       {
         id: "2",
@@ -51,23 +52,32 @@ export class App extends Component {
     this.setState({ value: e.target.value });
   };
 
+  // submit 시 새로운 데이터 생성 및 배열에 추가하며 state 업데이트
   handleSubmit = (e) => {
-
     e.preventDefault(); // form의 value 값을 input 할 때 페이지 리로드 막아줌
-
     // 새로운 할일 데이터 생성
     let newTodo = {
       id: Date.now,
       title: this.state.value,
       completed: false,
     };
-
     //원래 할 일에 새로운 데이터 더해주기 : 전개 연산자 DeepCopy
-    this.setState({ todoData: [...this.state.todoData, newTodo] });
-    
+    this.setState({ todoData: [...this.state.todoData, newTodo], value: "" });
     //submit 후 form의 value 값 비우기
-    this.setState({ value: "" });
+    //this.setState({value: ""   });
   };
+    // 체크박스 클릭한 리스트속 객체 id를 map으로 todoData 속 객체 id와 전수 비교,
+    // id 값이 일치한다면 completed 값 반대로 바꿔주는 알고리즘  
+  handleCompleChange = (id) => {
+    let newTodoData = this.state.todoData.map((data) => {
+      if (id === data.id) {
+        data.completed = !data.completed
+      }
+      return data;
+    });
+    this.setState({ todoData: newTodoData })
+
+  }
 
 
   render() {
@@ -80,9 +90,14 @@ export class App extends Component {
 
           {/* List 부분 : map() 메소드 사용해서 list 나열 */}
           {this.state.todoData.map((data) => (
-            <div style={this.getStyle()} key={data.id}>
+            <div style={this.getStyle(data.completed)} key={data.id}>
               <p>
-                <input type="checkbox" defaultChecked={false} />
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  onClick={() => { this.handleCompleChange(data.id) }} /> 
+                  {/* onchange 도 작동한다. 비교할 인자가 있을 때 함수 모양 주의 */}
+
                 {""}{data.title}
                 <button style={this.btnstyle} onClick={() => this.handleClick(data.id)}>╳</button>
               </p>
