@@ -23,8 +23,7 @@ import List from './List';
 
 
     return (
-        <div 
-        className={`${ todoData.length == 0 ? 'py-0': 'py-3' } nm-inset-neutral-100 px-4 rounded-3xl`}>
+        <div>
             <DragDropContext onDragEnd={handleEnd}>
                 <Droppable droppableId='todo'>
                     {(provided) => (

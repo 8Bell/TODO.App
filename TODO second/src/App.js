@@ -8,14 +8,14 @@ export default function App() {
 
   // Functional Component state 정의 방법
   // state 객체 요소마다 아래 문법으로 변수 정의
-  // useEffect -> localStorage에 데이터 string으로 저장
+  // 이제 객체 내부 요소가 아니므로 모든 메소드 구조 제거 
   const [todoData, setTodoData] = useState(
-    ()=> JSON.parse(window.localStorage.getItem("todoData"))||[]
+    ()=> JSON.parse(window.localStorage.getItem("tododata"))||[]
   );
   useEffect(()=>{
-    window.localStorage.setItem("todoData",JSON.stringify(todoData));
+    window.localStorage.setItem("tododata",JSON.stringify(todoData));
   }, [todoData]);
-
+  
   const [value, setValue] = useState("");
 
    // x 누를 때 State에서 list 배열 업데이트 
@@ -51,16 +51,15 @@ export default function App() {
     }
   
     return (
-      <div className='flex items-center justify-center w-screen h-screen bg-neutral-200'>
-        <div className='w-full py-8 px-6 m-5 nm-flat-neutral-200-lg rounded-3xl
-        md:w-3/4 md:max-w-lg lg:w-3/4 lg:max-w-lg'>
-          <div className='flex justify-between mb-4'>
+      <div className='flex items-center justify-center w-screen h-screen bg-gray-200'>
+        <div className='w-full p-6 m-4 bg-white rounded-xl shadow md:w-3/4 md:max-w-lg lg:w-3/4 lg:max-w-lg'>
+          <div className='flex justify-between mb-3'>
             <h1
-            className='px-3 py-1 text-2xl mb-2 text-blue-600 font-bold nm-flat-neutral-200 rounded-3xl'
-            >TODO</h1>
+            className='p-1 mt-0.5 text-2xl text-orange-300 font-bold'
+            >TO DO ✔️ </h1>
             <button
             onClick={handleDeleteAll}
-            className='flex px-2.5 py-1 my-2 rounded-3xl nm-convex-neutral-100-sm text-gray-400 hover:nm-concave-neutral-100-sm hover:text-blue-600 hover:font-semibold'
+            className='flex px-2 py-1 my-2 rounded-3xl bg-gray-100 text-gray-400 shadow hover:bg-orange-300 hover:text-white'
             >⏻</button>
           </div>
 
