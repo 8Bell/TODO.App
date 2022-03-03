@@ -23,8 +23,10 @@ const List = React.memo(({
         setTodoData(newTodoData)
     };
 
-    const handleModify=(id)=>{
-        const newTitle = prompt ("수정할 내용을 입력하세요.")
+    // 수정
+    const handleModify=(id,title)=>{
+        const newTitle = prompt ("수정할 내용을 입력하세요.",title)
+        if(newTitle !== null){
         let newTodoData = todoData.map((data) => {
             if (id === data.id) {
                 data.title = newTitle
@@ -32,13 +34,13 @@ const List = React.memo(({
             return data;
         });
         setTodoData(newTodoData)
-        }
+        }}
    
 
     return (
         <div
             key={id} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}
-            className={`${snapshot.isDragging ? 'bg-gray-400' : 'bg-gray-100'} flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 border rounded`}>
+            className={`${snapshot.isDragging ? 'bg-orange-100' : 'bg-gray-100'} flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 border rounded`}>
 
             <div className='items-center'>
                 <input

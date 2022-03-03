@@ -22,7 +22,6 @@ import List from './List';
     }
 
 
-
     return (
         <div>
             <DragDropContext onDragEnd={handleEnd}>

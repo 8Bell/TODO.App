@@ -22,6 +22,11 @@ export default function App() {
     const handleSubmit = (e) => {
       e.preventDefault(); // form의 value 값을 input 할 때 페이지 리로드 막아줌
       // 새로운 할일 데이터 생성
+      console.log("value",value)
+
+      if(value == ""){
+        alert("할 일을 입력하세요.")
+      }else{
       let newTodo = {
         id: Date.now(),
         title: value,
@@ -30,7 +35,7 @@ export default function App() {
       //원래 할 일에 새로운 데이터 더해주기 : 전개 연산자 DeepCopy //submit 후 form의 value 값 비우기
       setTodoData((prev)=>[...prev,newTodo]); //Setter에서 이전 state 필요시 함수형식 사용
       setValue("")
-    };
+    }};
 
 
     const handleDeleteAll = () => {
