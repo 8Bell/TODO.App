@@ -9,19 +9,19 @@ export default function Form({value, setValue, handleSubmit}) {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}  className='flex pt-2'>
+        <form onSubmit={handleSubmit}  className='flex mt-5'>
             <input
               type="text"
               name="value"
-              className='w-full px-3 py-2 mr-4 text-gray-500 border rounded shadow'
-              placeholder="해야 할 일을 입력 하세요."
+              className='w-full px-3 py-2 mr-3 text-blue-600 nm-inset-white border rounded-3xl caret-blue-600'
+              placeholder=" 해야 할 일을 입력 하세요."
               value={value}
               onChange={handleChange}
             />
             <input
               type="submit"
               value='⏏'
-              className='p-2 text-orange-300 border-2 border-orange-300 rounded hover:text-white hover:bg-orange-300'
+              className='flex px-2.5 my-1 nm-convex-neutral-100-sm text-neutral-400 rounded-3xl hover:text-blue-600 hover:nm-concave-neutral-100-sm'
             />
           </form>
     </div>

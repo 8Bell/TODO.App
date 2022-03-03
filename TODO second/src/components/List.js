@@ -40,21 +40,29 @@ const List = React.memo(({
     return (
         <div
             key={id} {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}
-            className={`${snapshot.isDragging ? 'bg-orange-100' : 'bg-gray-100'} flex items-center justify-between w-full px-4 py-1 my-2 text-gray-600 border rounded`}>
+            className={
+                
+                `${ completed ? (snapshot.isDragging ? ' nm-flat-neutral-200-xl brightness-105' : 'nm-inset-neutral-200 brightness-90')
+                  :  (snapshot.isDragging ? ' nm-flat-neutral-200-xl brightness-105 ' : 'nm-flat-neutral-200')
+                } 
+                flex items-center justify-between w-full px-4 py-1.5 my-3  rounded-3xl text-gray-500 hover:brightness-105`}>
 
-            <div className='items-center'>
+            <div className='items-center py-1'>
                 <input
                     type="checkbox"
                     defaultChecked={completed}
                     onChange={() => handleCompleChange(id)}
                 />{"  "}
                 <span 
-                className={`${completed ? 'line-through' : undefined} px-2 hover:text-orange-300 `}
+                className={`${completed ? 'line-through decoration-blue-600 decoration-4' : undefined} p-2 rounded-xl hover:text-blue-600 hover:after:content-['ㅤ💬']`}
                 onClick={()=>handleModify(id,title)}
                 >{title}</span>
             </div>
             <div className='items-center'>
-                <button className='px-1 py-0.5 rounded-3xl float-right text-xs text-gray-400 hover:text-orange-300  ' onClick={() => handleClick(id)}> ╳ </button>
+                <button className={
+                    `${completed ? (snapshot.isDragging ? 'nm-flat-neutral-200 text-gray-400 hover:nm-inset-neutral-200':'nm-flat-neutral-200 text-gray-400 hover:nm-inset-neutral-200')
+                    :(snapshot.isDragging ? 'nm-flat-neutral-200 text-gray-400 hover:nm-inset-neutral-200':'nm-flat-neutral-200 text-gray-400 hover:nm-inset-neutral-200') }
+                    px-1.5 py-1 rounded-3xl float-right text-xs `} onClick={() => handleClick(id)}> ╳ </button>
             </div>
         </div>
     )
