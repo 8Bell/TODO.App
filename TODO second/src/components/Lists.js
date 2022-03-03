@@ -26,16 +26,19 @@ export default function Lists({todoData, setTodoData}) {
             {/* List 부분 : map() 메소드 사용해서 list 나열 */}
             {todoData.map((data) => (
                 <div key={data.id}>
-                    <p>
+                    <div className='flex items-center justify-between w-full px-4 py-2 my-2 text-gray-600 bg-gray-100 border rounded'>
+                        <div className='items-center'>
                         <input
                             type="checkbox"
-                            defaultChecked={false}
-                            onClick={() => { handleCompleChange(data.id) }} />
-                        {/* onchange 도 작동한다. 비교할 인자가 있을 때 함수 모양 주의 */}
-
-                        {""}{data.title}
-                        <button onClick={() => handleClick(data.id)}>╳</button>
-                    </p>
+                            defaultChecked={data.completed}
+                            onChange={() => handleCompleChange(data.id) } 
+                            />{" "}
+                            <span className={data.completed ? 'line-through' : undefined}>{data.title}</span>
+                            </div>
+                            <div className='items-center'>
+                        <button className='px-4 py-2 float-right' onClick={() => handleClick(data.id)}>╳</button> 
+                        </div>
+                    </div>
                 </div>
             ))}
         </div>
