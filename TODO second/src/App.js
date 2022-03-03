@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import "./App.css";
 import Form from './components/Form';
 import Lists from './components/Lists';
@@ -9,7 +9,13 @@ export default function App() {
   // Functional Component state 정의 방법
   // state 객체 요소마다 아래 문법으로 변수 정의
   // 이제 객체 내부 요소가 아니므로 모든 메소드 구조 제거 
-  const [todoData, setTodoData] = useState([]);
+  const [todoData, setTodoData] = useState(
+    ()=> JSON.parse(window.localStorage.getItem("tododata"))||[]
+  );
+  useEffect(()=>{
+    window.localStorage.setItem("tododata",JSON.stringify(todoData));
+  }, [todoData]);
+  
   const [value, setValue] = useState("");
 
    // x 누를 때 State에서 list 배열 업데이트 
