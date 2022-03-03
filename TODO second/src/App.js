@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import "./App.css"
 import Lists from './components/Lists';
+import Form from './components/Form';
+
 
 export default function App() {
 
@@ -10,25 +12,20 @@ export default function App() {
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
   
-  // 입력할 때마다 State에서 value 값 e.target.value로 업데이트
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  // submit 시 새로운 데이터 생성 및 배열에 추가하며 state 업데이트
-  const handleSubmit = (e) => {
-    e.preventDefault(); // form의 value 값을 input 할 때 페이지 리로드 막아줌
-    // 새로운 할일 데이터 생성
-    let newTodo = {
-      id: Date.now,
-      title: value,
-      completed: false,
+    // submit 시 새로운 데이터 생성 및 배열에 추가하며 state 업데이트
+    const handleSubmit = (e) => {
+      e.preventDefault(); // form의 value 값을 input 할 때 페이지 리로드 막아줌
+      // 새로운 할일 데이터 생성
+      let newTodo = {
+        id: Date.now(),
+        title: value,
+        completed: false,
+      };
+      //원래 할 일에 새로운 데이터 더해주기 : 전개 연산자 DeepCopy //submit 후 form의 value 값 비우기
+      setTodoData((prev)=>[...prev,newTodo]); //Setter에서 이전 state 필요시 함수형식 사용
+      setValue("")
     };
-    //원래 할 일에 새로운 데이터 더해주기 : 전개 연산자 DeepCopy //submit 후 form의 value 값 비우기
-    setTodoData((prev)=>[...prev,newTodo]); //Setter에서 이전 state 필요시 함수형식 사용
-    setValue("")
-  };
-
+  
     return (
       <div className='container'>
         <div className='todoBlock'>
@@ -37,25 +34,8 @@ export default function App() {
           </div>
 
           <Lists todoData={todoData} setTodoData={setTodoData} /> 
+          <Form value={value} setValue={setValue} handleSubmit={handleSubmit} />
           
-          <form style={{ display: "flex" }} >
-            <input
-              type="text"
-              name="value"
-              style={{ flex: "10", padding: "5px" }}
-              placeholder="해야 할 일을 입력 하세요."
-              value={value}
-              onChange={handleChange}
-            />
-            <input
-              type="submit"
-              value='입력'
-              className='btn'
-              style={{ flex: '1' }}
-              onClick={handleSubmit}
-            />
-          </form>
-
         </div>
       </div>
     );

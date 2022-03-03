@@ -40,7 +40,6 @@ export default function Lists({todoData, setTodoData}) {
     };
 
 
-
     return (
         <div>
             {/* List 부분 : map() 메소드 사용해서 list 나열 */}
