@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import "./App.css"
-import Lists from './components/Lists';
+import React, { useState } from 'react';
+import "./App.css";
 import Form from './components/Form';
+import Lists from './components/Lists';
 
 
 export default function App() {

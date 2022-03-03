@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Form({value, setValue, handleSubmit}) {
 
@@ -13,7 +13,7 @@ export default function Form({value, setValue, handleSubmit}) {
             <input
               type="text"
               name="value"
-              className='w-full px-3 py-2 mr-4 text-gray-500 border rounded sha dow'
+              className='w-full px-3 py-2 mr-4 text-gray-500 border rounded shadow'
               placeholder="해야 할 일을 입력 하세요."
               value={value}
               onChange={handleChange}
