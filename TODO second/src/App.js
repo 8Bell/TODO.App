@@ -21,7 +21,7 @@ export default function App() {
    // x 누를 때 State에서 list 배열 업데이트 
    const handleClick = useCallback((id) => {
     let newTodoData = todoData.filter((data) => data.id !== id);
-    setTodoData(newTodoData); // Functional component는 useState로 업데이트
+    setTodoData(newTodoData); 
 },[todoData]); //의존성 배열 -> todoData가 바뀔 때만 리랜더링
   
     // submit 시 새로운 데이터 생성 및 배열에 추가하며 state 업데이트
