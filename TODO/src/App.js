@@ -57,7 +57,7 @@ export default function App() {
           <div className='flex justify-between mb-4'>
             <h1
             className='px-3 py-1 text-2xl mb-2 text-blue-600 font-bold nm-flat-neutral-200 rounded-3xl'
-            >TODO</h1>
+            >🅣●🅓●</h1>
             <button
             onClick={handleDeleteAll}
             className='flex px-2.5 py-1 my-2 rounded-3xl nm-convex-neutral-100-sm text-gray-400 hover:nm-concave-neutral-100-sm hover:text-blue-600 hover:font-semibold'
