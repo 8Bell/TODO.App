@@ -1,4 +1,4 @@
-# TODO.app v2.0
+# TODO.app v2.0.1
 
 <br>
 
@@ -10,7 +10,7 @@ https://neumorphismtodo.netlify.app/ <br>
 <br>
 <br>
 
-![image](https://user-images.githubusercontent.com/53814275/156621181-be8131ea-8a31-46a5-a67c-781bb76999a2.png)
+<img width="891" alt="image" src="https://user-images.githubusercontent.com/53814275/156642442-56aa4156-747a-4999-8134-0a83cfb66802.png">
 
 
 
