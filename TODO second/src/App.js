@@ -16,7 +16,7 @@ export default function App() {
    const handleClick = useCallback((id) => {
     let newTodoData = todoData.filter((data) => data.id !== id);
     setTodoData(newTodoData); // Functional component는 useState로 업데이트
-});
+},[todoData]); //의존성 배열 -> todoData가 바뀔 때만 리랜더링
   
     // submit 시 새로운 데이터 생성 및 배열에 추가하며 state 업데이트
     const handleSubmit = (e) => {
@@ -31,12 +31,25 @@ export default function App() {
       setTodoData((prev)=>[...prev,newTodo]); //Setter에서 이전 state 필요시 함수형식 사용
       setValue("")
     };
+
+
+    const handleDeleteAll = () => {
+      if(window.confirm("정말 다 삭제할까요?")){
+        setTodoData([])
+      }
+    }
   
     return (
-      <div className='flex items-center justify-center w-screen h-screen bg-blue-100'>
-        <div className='w-full p-6 m-4 bg-white rounded shadow md:w-3/4 md:max-w-lg lg:w-3/4 lg:max-w-lg'>
+      <div className='flex items-center justify-center w-screen h-screen bg-gray-200'>
+        <div className='w-full p-6 m-4 bg-white rounded-xl shadow md:w-3/4 md:max-w-lg lg:w-3/4 lg:max-w-lg'>
           <div className='flex justify-between mb-3'>
-            <h1>할 일 목록</h1>
+            <h1
+            className='p-1 text-2xl text-orange-300 font-bold'
+            >✔️ TO DO</h1>
+            <button
+            onClick={handleDeleteAll}
+            className='flex px-2 py-1 my-2 rounded-lg bg-gray-200 text-gray-400 shadow hover:bg-orange-300 hover:text-white'
+            >Delete all</button>
           </div>
 
           <Lists todoData={todoData} setTodoData={setTodoData} handleClick={handleClick} /> 

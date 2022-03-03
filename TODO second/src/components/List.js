@@ -23,6 +23,16 @@ const List = React.memo(({
         setTodoData(newTodoData)
     };
 
+    const handleModify=(id)=>{
+        const newTitle = prompt ("수정할 내용을 입력하세요.")
+        let newTodoData = todoData.map((data) => {
+            if (id === data.id) {
+                data.title = newTitle
+            }
+            return data;
+        });
+        setTodoData(newTodoData)
+        }
    
 
     return (
@@ -35,11 +45,14 @@ const List = React.memo(({
                     type="checkbox"
                     defaultChecked={completed}
                     onChange={() => handleCompleChange(id)}
-                />{" "}
-                <span className={completed ? 'line-through' : undefined}>{title}</span>
+                />{"  "}
+                <span 
+                className={`${completed ? 'line-through' : undefined} px-2 hover:text-orange-300 `}
+                onClick={()=>handleModify(id,title)}
+                >{title}</span>
             </div>
             <div className='items-center'>
-                <button className='px-4 py-2 float-right' onClick={() => handleClick(id)}>╳</button>
+                <button className='px-1 py-0.5 rounded-3xl float-right text-xs text-gray-400 hover:text-orange-300  ' onClick={() => handleClick(id)}> ╳ </button>
             </div>
         </div>
     )
