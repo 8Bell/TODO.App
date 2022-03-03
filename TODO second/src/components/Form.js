@@ -20,8 +20,8 @@ export default function Form({value, setValue, handleSubmit}) {
             />
             <input
               type="submit"
-              value='입력'
-              className='p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-200'
+              value='⏏'
+              className='p-2 text-orange-300 border-2 border-orange-300 rounded hover:text-white hover:bg-orange-300'
             />
           </form>
     </div>
