@@ -13,7 +13,7 @@ export default function Form({value, setValue, handleSubmit}) {
             <input
               type="text"
               name="value"
-              className='w-full px-3 py-2 mr-3 text-blue-600 nm-inset-white border rounded-3xl caret-blue-600'
+              className='w-full px-3 py-2 mr-4 nm-inset-neutral-100 rounded-3xl text-blue-600'
               placeholder=" 해야 할 일을 입력 하세요."
               value={value}
               onChange={handleChange}
